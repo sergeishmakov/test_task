@@ -1,8 +1,9 @@
-import { Component } from 'react';
+import styled from 'styled-components';
 
-class App extends Component {
-  render() {
-    return this.props.children;
-  }
+function app({ children }) {
+  return children;
 }
-export default App;
+export const App = styled(app)`
+  font-family: 'Roboto';
+  height: 100%;
+`;

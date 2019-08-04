@@ -1,0 +1,17 @@
+html {
+  height: 100%;
+  background-color: white;
+}
+body {
+  height: 100%;
+  background-color: white;
+}
+h1,
+h2,
+h3,
+h4 {
+  color: rgb(31, 30, 30);
+}
+#root {
+  height: 100%;
+}
