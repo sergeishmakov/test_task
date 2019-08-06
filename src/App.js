@@ -2,12 +2,10 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { getTeamsAction } from './actions/teamsActions';
-import { getUsersAction } from './actions/usersActions';
 
 class App extends Component {
   componentWillMount() {
     this.props.getTeamsAction();
-    this.props.getUsersAction();
   }
   render() {
     return this.props.children;
@@ -15,8 +13,7 @@ class App extends Component {
 }
 
 const mapDispatchToProps = {
-  getTeamsAction,
-  getUsersAction
+  getTeamsAction
 };
 
 export default connect(
