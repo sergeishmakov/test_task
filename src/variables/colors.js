@@ -1,1 +1,9 @@
 export const ElectricViolet = '#8C00D6';
+export const CodGray = '#121212';
+export const Monza = '#B7012E';
+export const BlazeOrange = '#FF5B00';
+export const White = '#FFFFFF';
+export const Tundora = '#424242';
+export const Gallery = '#EBEBEB';
+export const Alto = '#CFCFCF';
+export const MineShaft = '#343232';

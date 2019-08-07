@@ -7,7 +7,7 @@ export function TeamsList({ teams }) {
   return (
     <List>
       {teams.map(team => (
-        <TeamsListItem key={team.id} {...team} />
+        <TeamsListItem key={team.id} team={team} />
       ))}
     </List>
   );

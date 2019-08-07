@@ -1,12 +1,12 @@
 import React from 'react';
-import { Typography, Button } from '@material-ui/core';
+import { Typography, Button, AppBar } from '@material-ui/core';
 import { Add } from '@material-ui/icons';
 
-import { Tools, TeamsAppBar } from './styles';
+import { Tools } from './styles';
 
 export function Header({ title }) {
   return (
-    <TeamsAppBar position='static'>
+    <AppBar color='primary' position='static'>
       <Tools>
         <Typography variant='h5'>Workspace</Typography>
         <Typography variant='h6'>{title}</Typography>
@@ -15,6 +15,6 @@ export function Header({ title }) {
           Add team
         </Button>
       </Tools>
-    </TeamsAppBar>
+    </AppBar>
   );
 }
