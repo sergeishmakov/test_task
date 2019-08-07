@@ -1,7 +1,12 @@
-import styled from 'styled-components';
-import { Toolbar } from '@material-ui/core';
+import { styled } from '@material-ui/styles';
+import { Toolbar, AppBar } from '@material-ui/core';
 
-export const Tools = styled(Toolbar)`
-  display: flex;
-  justify-content: space-between;
-`;
+import colors from '../../../../variables/colors';
+
+export const Tools = styled(Toolbar)({
+  display: 'flex',
+  justifyContent: 'space-between'
+});
+export const TeamsAppBar = styled(AppBar)({
+  background: colors.ElectricViolet
+});
