@@ -9,12 +9,13 @@ class Members extends Component {
   state = {
     members: []
   };
+
   async componentDidMount() {
-    const teamId = window.location.pathname.split('/').pop();
-    const members = await getMembers(teamId);
-    console.log(members);
+    const { id } = this.props.match.params;
+    const members = await getMembers(id);
     this.setState({ members });
   }
+
   render() {
     return (
       <Container>

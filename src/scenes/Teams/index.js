@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Paper, Container } from '@material-ui/core';
 import { Route, Switch } from 'react-router-dom';
 
@@ -18,18 +18,18 @@ class Teams extends Component {
   }
 
   render() {
-    console.log(this.props.match.path);
+    const { path } = this.props.match;
     return (
       <Switch>
-        <Route path={`${this.props.match.path}/:id`} component={Members} />
-        <Fragment>
+        <Route path={`${path}/:id`} component={Members} />
+        <>
           <Container>
             <Header title='Teams' label='Add team' />
             <Paper>
               <TeamsList teams={this.state.teams} />
             </Paper>
           </Container>
-        </Fragment>
+        </>
       </Switch>
     );
   }
