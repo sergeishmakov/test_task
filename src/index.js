@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ThemeProvider } from '@material-ui/styles';
+import { ThemeProvider, StylesProvider } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
@@ -10,16 +10,18 @@ import theme from './styles';
 
 ReactDOM.render(
   <BrowserRouter>
-    <ThemeProvider theme={theme}>
-      <>
-        <CssBaseline />
-        <Switch>
-          <Redirect exact from='/' to='/teams' />
-          <Route path='/teams' component={Teams} />
-          <Route component={NotFound} />
-        </Switch>
-      </>
-    </ThemeProvider>
+    <StylesProvider injectFirst>
+      <ThemeProvider theme={theme}>
+        <>
+          <CssBaseline />
+          <Switch>
+            <Redirect exact from='/' to='/teams' />
+            <Route path='/teams' component={Teams} />
+            <Route component={NotFound} />
+          </Switch>
+        </>
+      </ThemeProvider>
+    </StylesProvider>
   </BrowserRouter>,
 
   document.getElementById('root')
