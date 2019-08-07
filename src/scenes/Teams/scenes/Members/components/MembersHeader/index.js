@@ -4,7 +4,7 @@ import { Add, KeyboardArrowLeft } from '@material-ui/icons';
 
 import { Tools } from './styles';
 
-export function MembersHeader({ title, label }) {
+export function MembersHeader({ title, label, onOpen }) {
   return (
     <AppBar color='primary' position='static'>
       <Tools>
@@ -13,7 +13,7 @@ export function MembersHeader({ title, label }) {
           Go Back
         </Button>
         <Typography variant='h6'>{title}</Typography>
-        <Button color='inherit'>
+        <Button onClick={onOpen} color='inherit'>
           <Add />
           {label}
         </Button>
