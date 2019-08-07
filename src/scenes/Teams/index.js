@@ -9,11 +9,12 @@ class Teams extends Component {
   state = {
     teams: []
   };
-  componentWillMount = async () => {
+
+  async componentDidMount() {
     const teams = await getTeams();
-    console.log(teams);
-    this.setState({ teams: teams });
-  };
+    this.setState({ teams });
+  }
+
   render() {
     return (
       <Container>

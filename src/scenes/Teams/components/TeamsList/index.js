@@ -6,8 +6,8 @@ import { TeamsListItem } from './components/TeamsListItem';
 export function TeamsList({ teams }) {
   return (
     <List>
-      {teams.map((team, index) => (
-        <TeamsListItem key={index} {...team} />
+      {teams.map(team => (
+        <TeamsListItem key={team.id} {...team} />
       ))}
     </List>
   );

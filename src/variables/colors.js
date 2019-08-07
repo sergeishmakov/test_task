@@ -1,3 +1,1 @@
-export default {
-  ElectricViolet: '#8C00D6'
-};
+export const ElectricViolet = '#8C00D6';
