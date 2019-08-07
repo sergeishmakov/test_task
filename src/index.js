@@ -1,19 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { ThemeProvider } from '@material-ui/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
-import App from './App';
-import { Home } from './components/Home';
-import { NotFound } from './components/NotFound';
+import Teams from './scenes/Teams';
+import { NotFound } from './scenes/NotFound';
+import theme from './styles';
 
 ReactDOM.render(
   <BrowserRouter>
-    <App>
-      <Switch>
-        <Route exact path='/' component={Home} />
-        <Route component={NotFound} />
-      </Switch>
-    </App>
+    <ThemeProvider theme={theme}>
+      <>
+        <CssBaseline />
+        <Switch>
+          <Redirect exact from='/' to='/teams' />
+          <Route path='/teams' component={Teams} />
+          <Route component={NotFound} />
+        </Switch>
+      </>
+    </ThemeProvider>
   </BrowserRouter>,
+
   document.getElementById('root')
 );
