@@ -1,9 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Paper, Container } from '@material-ui/core';
+import { Route, Switch } from 'react-router-dom';
 
 import { TeamsList } from './components/TeamsList';
 import { getTeams } from '../../api/teams';
 import { Header } from './components/Header';
+import Members from './scenes/Members';
 
 class Teams extends Component {
   state = {
@@ -16,13 +18,19 @@ class Teams extends Component {
   }
 
   render() {
+    console.log(this.props.match.path);
     return (
-      <Container>
-        <Header title='Teams' />
-        <Paper>
-          <TeamsList teams={this.state.teams} />
-        </Paper>
-      </Container>
+      <Switch>
+        <Route path={`${this.props.match.path}/:id`} component={Members} />
+        <Fragment>
+          <Container>
+            <Header title='Teams' label='Add team' />
+            <Paper>
+              <TeamsList teams={this.state.teams} />
+            </Paper>
+          </Container>
+        </Fragment>
+      </Switch>
     );
   }
 }

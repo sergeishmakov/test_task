@@ -1,14 +1,17 @@
 import React from 'react';
 import { Typography, Button, AppBar } from '@material-ui/core';
-import { Add } from '@material-ui/icons';
+import { Add, KeyboardArrowLeft } from '@material-ui/icons';
 
 import { Tools } from './styles';
 
-export function Header({ title, label }) {
+export function MembersHeader({ title, label }) {
   return (
     <AppBar color='primary' position='static'>
       <Tools>
-        <Typography variant='h5'>Workspace</Typography>
+        <Button color='inherit' href='/teams'>
+          <KeyboardArrowLeft />
+          Go Back
+        </Button>
         <Typography variant='h6'>{title}</Typography>
         <Button color='inherit'>
           <Add />
