@@ -1,11 +1,11 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
 import arrayMutators from 'final-form-arrays';
-import { TextField, Button, CardContent, Typography } from '@material-ui/core';
+import { Button, CardContent, Typography } from '@material-ui/core';
 import { FieldArray } from 'react-final-form-arrays';
 import { Add, Delete, Send, Clear } from '@material-ui/icons';
 
-import { ButtonsWrapper, StyledCard, Row } from './styles';
+import { ButtonsWrapper, StyledCard, Row, StyledInput } from './styles';
 
 export function InviteForm({ onSubmit }) {
   return (
@@ -21,45 +21,44 @@ export function InviteForm({ onSubmit }) {
         },
         pristine,
         form,
-        submitting,
-        values
+        submitting
       }) => {
         return (
           <form onSubmit={handleSubmit}>
-            <div>
-              <Button variant='contained' color='primary' onClick={() => push('members', null)}>
+            <Row>
+              <Button variant='contained' color='primary' onClick={() => push('users', null)}>
                 <Add />
                 Add member
               </Button>
-              <Button onClick={() => pop('members')}>Remove member</Button>
-            </div>
+              <Button onClick={() => pop('users')}>Remove member</Button>
+            </Row>
 
-            <FieldArray name='members'>
+            <FieldArray name='users'>
               {({ fields }) =>
                 fields.map((name, index) => (
                   <StyledCard key={name}>
                     <CardContent>
                       <Row>
                         <Typography variant='subtitle2'>Member {index + 1}:</Typography>
-                        <Button size='small' variant='contained' color='secondary' onClick={() => fields.remove(index)}>
+                        <Button size='small' color='secondary' onClick={() => fields.remove(index)}>
                           Delete
                           <Delete />
                         </Button>
                       </Row>
-                      <Field fullWidth name='email' component={TextField} type='text' label='Email address' />
-                      <Field fullWidth name='name' component={TextField} type='text' label='Full name' />
+                      <Field fullWidth name={`${name}.email`} component={StyledInput} placeholder='Email address' />
+                      <Field fullWidth name={`${name}.name`} component={StyledInput} placeholder='Full name' />
                     </CardContent>
                   </StyledCard>
                 ))
               }
             </FieldArray>
 
-            <ButtonsWrapper className='buttons'>
+            <ButtonsWrapper>
               <Button type='submit' color='primary' variant='contained' disabled={submitting || pristine}>
                 Send
                 <Send />
               </Button>
-              <Button type='submit' onClick={form.reset} variant='outlined' disabled={submitting || pristine}>
+              <Button onClick={form.reset} variant='outlined' disabled={submitting || pristine}>
                 Reset
                 <Clear />
               </Button>
