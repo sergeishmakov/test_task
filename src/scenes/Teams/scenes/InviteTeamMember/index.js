@@ -6,11 +6,12 @@ import { Input, TextField } from 'final-form-material-ui';
 import { Header } from './components/Header';
 import { CongratulationDialog } from './components/CongratulationDialog';
 import { RegisterForm, Group, StyledTypography } from './styles';
-import { createUser } from '../../../../../../api/members';
+import { createUser } from '../../../../api/members';
 
-class Invite extends Component {
+class InviteTeamMember extends Component {
   state = {
-    open: true
+    open: true,
+    error: null
   };
 
   handleOpen = () => {
@@ -22,13 +23,21 @@ class Invite extends Component {
   };
 
   handleSubmit = async values => {
-    const teamId = this.props.match.url.split('/')[2];
-    await createUser({ ...values, teamId });
-    this.props.history.push('/tasks');
+    const { token } = this.props.match.params;
+    try {
+      await createUser({ ...values, token });
+      this.props.history.push('/tasks');
+    } catch (e) {
+      if (e.statusCode === 400) {
+        this.setState({ error: 'Sorry, we did not send you an invitation, you cannot register' });
+      } else {
+        this.setState({ error: e.message });
+      }
+    }
   };
 
   render() {
-    const { open } = this.state;
+    const { open, error } = this.state;
     return (
       <Container>
         <Header title='Registration' />
@@ -38,17 +47,16 @@ class Invite extends Component {
             render={({ handleSubmit, pristine, invalid }) => (
               <RegisterForm onSubmit={handleSubmit}>
                 <Container maxWidth='sm'>
+                  {error && <Typography color='secondary'>{error}</Typography>}
                   <StyledTypography variant='h4'>Registration</StyledTypography>
                   <Group>
                     <Typography>Full Name:</Typography>
                     <Field fullWidth name='name' component={Input} placeholder='First Name' />
                   </Group>
-
                   <Group>
                     <Typography>Nickname:</Typography>
                     <Field fullWidth name='nickname' component={Input} placeholder='Your nickname' />
                   </Group>
-
                   <Group>
                     <Typography>About yourself:</Typography>
                     <Field fullWidth name='description' component={TextField} placeholder='Tell us what you can do' />
@@ -66,4 +74,4 @@ class Invite extends Component {
     );
   }
 }
-export default Invite;
+export default InviteTeamMember;

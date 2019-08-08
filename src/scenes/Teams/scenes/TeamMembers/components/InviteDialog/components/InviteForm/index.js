@@ -5,7 +5,7 @@ import { Button, CardContent, Typography } from '@material-ui/core';
 import { FieldArray } from 'react-final-form-arrays';
 import { Add, Delete, Send, Clear } from '@material-ui/icons';
 
-import { ButtonsWrapper, StyledCard, Row, StyledInput } from './styles';
+import { Buttons, Card, Row, StyledInput } from './styles';
 
 export function InviteForm({ onSubmit }) {
   return (
@@ -36,7 +36,7 @@ export function InviteForm({ onSubmit }) {
             <FieldArray name='users'>
               {({ fields }) =>
                 fields.map((name, index) => (
-                  <StyledCard key={name}>
+                  <Card key={name}>
                     <CardContent>
                       <Row>
                         <Typography variant='subtitle2'>Member {index + 1}:</Typography>
@@ -48,12 +48,12 @@ export function InviteForm({ onSubmit }) {
                       <Field fullWidth name={`${name}.email`} component={StyledInput} placeholder='Email address' />
                       <Field fullWidth name={`${name}.name`} component={StyledInput} placeholder='Full name' />
                     </CardContent>
-                  </StyledCard>
+                  </Card>
                 ))
               }
             </FieldArray>
 
-            <ButtonsWrapper>
+            <Buttons>
               <Button type='submit' color='primary' variant='contained' disabled={submitting || pristine}>
                 Send
                 <Send />
@@ -62,7 +62,7 @@ export function InviteForm({ onSubmit }) {
                 Reset
                 <Clear />
               </Button>
-            </ButtonsWrapper>
+            </Buttons>
           </form>
         );
       }}

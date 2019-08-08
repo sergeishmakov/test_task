@@ -1,8 +1,10 @@
 import { client } from './client';
 
 export async function getMembers(teamId) {
-  const res = await client.get(`members/${teamId}`);
-  return res.data;
+  const {
+    data: { members }
+  } = await client.get(`members/${teamId}`);
+  return members;
 }
 
 export async function createUser(data) {

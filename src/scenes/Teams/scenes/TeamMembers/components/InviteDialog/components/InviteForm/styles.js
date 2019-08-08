@@ -1,14 +1,14 @@
 import styled from 'styled-components';
-import { Card } from '@material-ui/core';
+import CardMui from '@material-ui/core/Card';
 import { Input } from 'final-form-material-ui';
 
-export const ButtonsWrapper = styled.div`
+export const Buttons = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 20px 0 20px 0;
 `;
 
-export const StyledCard = styled(Card)`
+export const Card = styled(CardMui)`
   margin: 20px 0 20px 0;
 `;
 
