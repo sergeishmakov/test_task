@@ -1,0 +1,18 @@
+tenant: vadimnapalkov
+app: test-task
+service: front-test
+
+frameworkVersion: '>=1.38.0 <2.0.0'
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  environment:
+    API_URL: 'your api url'
+
+plugins:
+  - serverless-finch
+custom:
+  client:
+    bucketName: 'your bucket name'
+    distributionFolder: dist
