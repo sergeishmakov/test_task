@@ -7,7 +7,7 @@ import { Wrapper } from './styles';
 export function MembersList({ members }) {
   return (
     <List>
-      {members ? (
+      {members.length ? (
         members.map(member => <MembersListItem key={member.id} member={member} />)
       ) : (
         <Wrapper>

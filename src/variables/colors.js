@@ -7,3 +7,5 @@ export const Tundora = '#424242';
 export const Gallery = '#EBEBEB';
 export const Alto = '#CFCFCF';
 export const MineShaft = '#343232';
+export const Scarlet = '#FF1C14';
+export const Malachite = '#02D44C';
